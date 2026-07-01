@@ -66,3 +66,50 @@ def teacher_screen_login():
 
     footer_dashboard()
 
+def teacher_screen_register():
+    c1, c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
+    with c1:
+        header_dashboard()
+    with c2:
+        if st.button("Go back to Home", type='secondary', key='loginbackbtn', shortcut="control+backspace"):
+            st.session_state['login_type'] = None
+            st.rerun()
+
+
+
+    st.header('Register your teacher profile')
+
+    st.space()
+    st.space()
+
+    
+    teacher_username = st.text_input("Enter username", placeholder='ananyaroy')
+
+    teacher_name = st.text_input("Enter name", placeholder='Ananya Roy')
+
+    teacher_pass = st.text_input("Enter password", type='password', placeholder="Enter password")
+
+    teacher_pass_confirm = st.text_input("Confirm your password", type='password', placeholder="Enter password")
+
+    st.divider()
+
+    btnc1, btnc2 = st.columns(2)
+
+    with btnc1:
+        if st.button('Register now', icon=':material/passkey:', shortcut='control+enter', width='stretch'):
+            success, message = register_teacher(teacher_username, teacher_name, teacher_pass, teacher_pass_confirm)
+            if success:
+                st.success(message)
+                import time
+                time.sleep(2)
+                st.session_state.teacher_login_type = "login"
+                st.rerun()
+            else:
+                st.error(message)
+
+
+    with btnc2:
+        if st.button('Login Instead', type="primary", icon=':material/passkey:', width='stretch'):
+            st.session_state.teacher_login_type = 'login'
+
+    footer_dashboard()
