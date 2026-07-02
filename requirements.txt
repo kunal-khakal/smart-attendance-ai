@@ -1,0 +1,19 @@
+streamlit
+opencv-python
+numpy
+pandas
+
+# Face Recognition
+scikit-learn
+dlib-bin
+git+https://github.com/ageitgey/face_recognition_models
+face-recognition
+setuptools<70.0.0
+
+# Database
+supabase
+bcrypt
+
+# QR Code
+segno
+Pillow
